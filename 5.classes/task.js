@@ -184,3 +184,35 @@ library.addBook(new Magazine("Мурзилка", 1924, 60));
 console.log(library.findBookBy("name", "Властелин колец")); //null
 console.log(library.findBookBy("releaseDate", 1924).name); //"Мурзилка"
 */
+
+class Student {
+  constructor() {
+    this.marks = [];
+  }
+
+  addMark(mark, subject) {
+    if (this.marks[subject] === undefined) {
+      this.marks[subject] = [];
+    }
+
+    this.marks[subject].push(mark);
+  }
+
+  getAverageBySubject(subject) {
+    return this.marks[subject].reduce((a, b) => (a + b)) / this.marks[subject].length;
+  }
+
+  getAverage() {
+    let val = Object.values(this.marks);
+
+    for (let i = 0; i < val.length; i++){
+      let sum1 = val[i].reduce((a, b) => (a + b));
+      let sum2 = val[i+1].reduce((a, b) => (a + b));
+      let sum = sum1 + sum2;
+      let len = val[i].length + val[i+1].length;
+      let average = sum / len;
+      return average;
+    }
+    
+  }
+}
